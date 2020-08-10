@@ -6,5 +6,7 @@
     </head>
     <body>
         @yield('content')
+        @include('includes._footer')
+        @include('includes._scripts')
     </body>
 </html>
