@@ -1,0 +1,13 @@
+DECLARE @Amount DECIMAL(18, 2) = 10000; -- Example Loan Amount
+
+SELECT
+    no_months AS TenureMonths,
+    interest_rate AS MonthlyRatePercent,
+    ROUND(
+        (@Amount + (@Amount * (interest_rate / 100.0) * no_months)) / no_months, 2
+    ) AS MonthlyPayment,
+    ROUND(
+        @Amount * (interest_rate / 100.0), 2
+    ) AS InterestPerMonth
+FROM m_InterestRates
+WHERE status = 'A';
